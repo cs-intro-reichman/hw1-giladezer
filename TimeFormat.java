@@ -1,17 +1,27 @@
 // Represents the hh:mm time format using an AM/PM format. 
+
+import java.util.Scanner;
+
 public class TimeFormat {
 	public static void main(String[] args) {
-		// In Java, the command-line arguments args[0], args[1], ... are represented
-		// each by a string. In this program, the single "hh:mm" input is represented
-		// by the single command-line string argument args[0]. 
-		//   
-		// The following statement handles the hours part of the input.
-		// It concatenates the empty string "" with the leftmost hour-digit. 
-		// It then concatenates the resulting string with the rightmost hour-digit,
-		// and then uses parseInt to cast the resulting string as an int.
-		int hours = Integer.parseInt("" + args[0].charAt(0) + args[0].charAt(1));
-		// Does the same with the minutes part of the input.
-		int minutes = Integer.parseInt("" + args[0].charAt(3) + args[0].charAt(4));
-        // Replace this comment with the rest of your code
+		
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("Enter tcurrent Hour ");
+	    int hours = in.nextInt();
+	    System.out.println("Enter current Minutes ");
+	    int minutes = in.nextInt();
+
+	    String period;
+	    if (hours >= 12) {
+	    	period = "PM";
+	    } else {
+	    	period = "AM";
+	    }
+
+	    hours = hours % 12;
+
+	    System.out.printf("The time is: %d:%02d %s\n", hours, minutes, period);
+
 	}
 }
