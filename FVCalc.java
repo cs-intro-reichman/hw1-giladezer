@@ -8,7 +8,7 @@ public class FVCalc {
 		}
 
 		int money = Integer.parseInt(args[0]);
-		int rate = Integer.parseInt(args[1]);
+		double rate = Double.parseDouble(args[1]);
 		int years = Integer.parseInt(args[2]);
 
 		int finalValue = (int)(money * Math.pow((1 + rate/100), years));
