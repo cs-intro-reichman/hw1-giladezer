@@ -1,17 +1,11 @@
 // Generates three integer random numbers in a given range,
 // and prints them in increasing order.
-import java.util.Scanner;
 
 public class Ascend {
 
-	public static int[] generateRandomNumbers() {
-
-		Scanner in = new Scanner(System.in);
-
+	public static int[] generateRandomNumbers(int upperBound) {
 	
-		System.out.println("Enter lower bound (integer): ");
-		int upperBound = in.nextInt();
-
+	
 		int[] numbers = new int[3];
 		for (int i = 0; i < 3; i++) {
 			numbers[i] = (int) (Math.random() * (upperBound + 1));
@@ -33,12 +27,10 @@ public class Ascend {
 	}
 	public static void main(String[] args) {
 		
-		int[] randomNumbers = generateRandomNumbers();
-		oragniseNumbersGoingUp(randomNumbers);
-		System.out.println("The numbers in increasing order are: ");
-		for (int num : randomNumbers) {
-			System.out.print(num + "\n");
-		}
-
+		int[] nums = generateRandomNumbers(Integer.parseInt(args[0]));
+		oragniseNumbersGoingUp(nums);
+		 
+		System.out.println(nums[2] + " " + nums[1] + " " + nums[0]);
+	
 	}
 }

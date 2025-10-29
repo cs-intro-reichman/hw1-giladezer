@@ -1,27 +1,38 @@
-// Represents the hh:mm time format using an AM/PM format. 
-
-import java.util.Scanner;
-
 public class TimeFormat {
-	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        // Check if input is provided
+        if (args.length != 1) {
+            System.out.println("Usage: java TimeFormat hh:mm");
+            return;
+        }
 
-		System.out.println("Enter tcurrent Hour ");
-	    int hours = in.nextInt();
-	    System.out.println("Enter current Minutes ");
-	    int minutes = in.nextInt();
+        String time = args[0];
+        String[] parts = time.split(":");
 
-	    String period;
-	    if (hours >= 12) {
-	    	period = "PM";
-	    } else {
-	    	period = "AM";
-	    }
+        // Parse hours and minutes
+        int hours = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
 
-	    hours = hours % 12;
+        // Validate input ranges
+        if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+            System.out.println("Invalid time format");
+            return;
+        }
 
-	    System.out.printf("The time is: %d:%02d %s\n", hours, minutes, period);
+        // Determine AM/PM
+        String period = (hours < 12) ? "AM" : "PM";
 
-	}
+        // Convert hours to 12-hour format
+        if (hours > 12) {
+            hours -= 12;
+        }
+
+        // Handle midnight case
+        if (hours == 0) {
+            hours = 0;
+        }
+
+        // Format and print result
+        System.out.printf("%d:%02d %s%n", hours, minutes, period);
+    }
 }
