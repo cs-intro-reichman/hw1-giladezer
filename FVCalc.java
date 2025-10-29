@@ -11,8 +11,8 @@ public class FVCalc {
 		int rate = Integer.parseInt(args[1]);
 		int years = Integer.parseInt(args[2]);
 
-		double finalValue = money * Math.pow((1 + rate/100), years);
-		System.out.println("After " + years + "years, " + money + 
+		int finalValue = (int)(money * Math.pow((1 + rate/100), years));
+		System.out.println("After " + years + " years, " + money + 
 		" saved at " + rate + "% will yield $" + finalValue);
 	}
 }
